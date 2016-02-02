@@ -1,4 +1,4 @@
 import {bootstrap}  from 'angular2/platform/browser';
-import {HelloWorld} from './hello_world';
+import {PfadfinderMeinolf} from './pfadfinder_meinolf';
 
-bootstrap(HelloWorld);
+bootstrap(PfadfinderMeinolf);
