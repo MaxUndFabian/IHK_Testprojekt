@@ -1,0 +1,15 @@
+{
+  "name": "pfadfinder_meinolf",
+  "version": "1.0.0",
+  "description": "Webpage for an local scoutgroup from Paderborn. This is part of a project for the IHK.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Max Dierkes, Fabian Hasse",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
