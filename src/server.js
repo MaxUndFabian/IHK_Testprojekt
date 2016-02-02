@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use('/client', express.static('client'));
+app.use('/app', express.static('client/ts'));
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + "/client/index.html");
