@@ -1,6 +1,10 @@
 <html>
 	<head>
 		<title>DPSG St. Meinolf</title>
+        
+        
+        <script type="text/javascript" src="client/js/jquery-2.2.0.js"></script>
+        <script type="text/javascript" src="client/js/bootstrap.js"></script>
 
 		<!-- 1. Load libraries -->
 	    <!-- IE required polyfills (from CDN), in this exact order -->
@@ -23,9 +27,35 @@
 	      System.import('app/main')
 	            .then(null, console.error.bind(console));
 	    </script>
-	    
+  
+        <link href="client/css/style.css" rel="stylesheet">
+        <link href="client/css/bootstrap.min.css" rel="stylesheet"> 
+        	    
 	</head>
 	<body>
+        <header>
+		  <img id="logo" src="client/img/logo.png" background-color="#eee" width="150" height="150" float="left">
+	    </header>
+        
 		<pfadfinder-meinolf>Loading...</pfadfinder-meinolf>
+        
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-6 col-sm-6 col-xs-6">
+                        <nav id="footer_nav">
+                            <ul>
+                                <li><a href="#">Impressum</a></li>
+                                <li><a href="#">Kontakt</a></li>
+                                <li><a href="#">Links</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col col-md-6 col-sm-6 col-xs-6" style="border-left: 1px solid #4A4A4A;">
+                        <img class="img-responsive" src="client/img/dpsg_logo_invert.png"/>
+                    </div>
+                </div>
+            </div>
+	    </footer>
 	</body>
 </html>
