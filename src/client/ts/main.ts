@@ -1,4 +1,4 @@
 import {bootstrap}  from 'angular2/platform/browser';
-import {PfadfinderMeinolf} from './pfadfinder_meinolf';
+import {AppRoutingComponent} from './app-routing';
 
-bootstrap(PfadfinderMeinolf);
+bootstrap(AppRoutingComponent);
