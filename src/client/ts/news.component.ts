@@ -12,7 +12,7 @@ import {NewsService} from './news.service';
 })
 export class NewsComponent {
   news: News[];
-  News: News;
+  errorMessage : string;
   constructor(private _router: Router, private _newsService: NewsService){}
     
   gotoArticle(id: number){
@@ -21,7 +21,10 @@ export class NewsComponent {
   }
   
   getNews() {
-    this._newsService.getNews().then(news => this.news = news);
+    console.log(this._newsService.getNews());
+    this._newsService.getNews().subscribe(
+                     news => this.news = news,
+                     error =>  this.errorMessage = <any>error);
   }
   ngOnInit() {
     this.getNews();
