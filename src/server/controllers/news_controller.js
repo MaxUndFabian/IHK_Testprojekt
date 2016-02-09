@@ -29,7 +29,14 @@ module.exports.list = function(req, res){
 
 
 module.exports.single = function(req, res){
-	
+	con.query('SELECT * FROM Newsentries WHERE id=' + req.params.id + '', function(err, rows){
+        if(err){}
+        if(Object.keys(rows).length == 0){
+            res.sendStatus(404);
+        }
+        res.json(rows[0]);
+        console.log(rows[0]);
+    });
 }
 
 
