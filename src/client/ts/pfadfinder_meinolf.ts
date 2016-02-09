@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
   // Declare the tag name in index.html to where the component attaches
   selector: 'pfadfinder-meinolf',
   // Location of the template for this component
-  templateUrl: 'client/html/test.html'
+  templateUrl: 'client/html/index.html'
 })
 export class PfadfinderMeinolfComponent {
   // Declaring the variable for binding with initial value
