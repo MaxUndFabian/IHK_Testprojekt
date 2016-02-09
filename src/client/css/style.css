@@ -12,8 +12,8 @@ h3{
 
 a{
 	color: #B5142B;
+    cursor: pointer;
 }
-
 
 a:hover, a:focus{
 	color: #8E1123;
@@ -39,7 +39,8 @@ header{
 }
 
 #content{
-	padding: 50px 40px;
+	padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 footer{
@@ -61,6 +62,10 @@ footer .img-responsive{
 
 #navigation_wrapper{
 	background-color: #003056;
+}
+
+article{
+    margin-bottom: 30px;
 }
 
 .sidebar{
@@ -95,10 +100,6 @@ footer .img-responsive{
 
 .disablePadding{
 	padding: 0px;
-}
-
-.nav>li {
-    padding-left: 10px;
 }
 
 .navbar{
@@ -144,7 +145,7 @@ footer .img-responsive{
 }
 
 .navbar-default .navbar-collapse{
-	    border: 0px;
+	border: 0px;
 }
 
 .btn-primary {
@@ -166,6 +167,11 @@ footer .img-responsive{
 
 .dropdown-menu>li>a{
 	padding: 8px 20px;
+}
+
+.router-link-active{
+    background-color: #ECECEC !important;
+    color: #000 !important;
 }
 
 @media (max-width: 767px){
