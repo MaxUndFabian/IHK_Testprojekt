@@ -9,6 +9,8 @@ import { LinksComponent } from './links';
 import { FooterComponent} from './footer';
 import { ContactComponent } from './contact';
 import { ImprintComponent } from './imprint';
+import { LoginComponent } from './login';
+
 
 @Component({
   selector: 'my-app',
@@ -51,6 +53,11 @@ import { ImprintComponent } from './imprint';
     path: '/imprint',
     name: 'Imprint',
     component: ImprintComponent
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginComponent
   }
 ])
 export class AppRoutingComponent {
