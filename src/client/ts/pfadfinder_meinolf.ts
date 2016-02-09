@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
   // Location of the template for this component
   templateUrl: 'client/html/test.html'
 })
-export class PfadfinderMeinolf {
+export class PfadfinderMeinolfComponent {
   // Declaring the variable for binding with initial value
   yourName: string = '';
 }
