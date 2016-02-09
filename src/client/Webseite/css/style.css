@@ -42,20 +42,20 @@ button a:hover,button a:focus{
 	padding: 50px 40px;
 }
 
-#footer{
+footer{
 	background-color: #252525;
 	padding: 30px;
 }
 
-#footer_nav{
+footer_nav{
 	float: right;
 }
 
-#footer_nav li{
+footer_nav li{
 	list-style: none;
 }
 
-#footer img{
+footer .img-responsive{
 	max-width: 115px;
 }
 
