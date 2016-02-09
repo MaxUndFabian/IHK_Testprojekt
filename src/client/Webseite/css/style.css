@@ -1,0 +1,195 @@
+body{
+    font-family:'Arial';
+    color: #000;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+	font-weight: 400;
+}
+
+h3{
+	margin: 0px;
+}
+
+a{
+	color: #B5142B;
+}
+
+
+a:hover, a:focus{
+	color: #8E1123;
+}
+
+button a{
+	color: #fff;
+}
+
+button a:hover,button a:focus{
+	color: #F1F1F1;
+	text-decoration: none;
+}
+
+#logo{
+    margin: 60px;
+}
+
+#header{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(12, 12, 12, 0.62)), url('../img/header.jpg');
+    background-size: 100% auto;
+    text-align: center;
+}
+
+#content{
+	padding: 50px 40px;
+}
+
+#footer{
+	background-color: #252525;
+	padding: 30px;
+}
+
+#footer_nav{
+	float: right;
+}
+
+#footer_nav li{
+	list-style: none;
+}
+
+#footer img{
+	max-width: 115px;
+}
+
+#navigation_wrapper{
+	background-color: #003056;
+}
+
+.sidebar{
+	background-color: #ECECEC;
+	padding-bottom: 16px;
+}
+
+.news_divider{
+	height: 60px;
+}
+
+.date {
+	float: right;
+    text-align: center;
+    margin: -5px 0px 0px 0px;
+}
+
+.date .month_day {
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0;
+}
+
+.date .year {
+	font-size: 21px;
+    letter-spacing: -0.07em;
+    text-align: center;
+    padding: 0;
+    margin-top: -5px;
+}
+
+.disablePadding{
+	padding: 0px;
+}
+
+.nav>li {
+    padding-left: 10px;
+}
+
+.navbar{
+	margin-bottom: 0px;
+}
+
+.navbar-nav {
+    margin: 0px -15px;
+}
+
+.navbar-collapse{
+	padding-left: 0px;
+}
+
+.navbar-default{
+	background-color: transparent;
+	border: 0px;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:focus{
+	color: #ffffff;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	color: #aaaaaa;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	color: #000;
+    background-color: #ECECEC;
+}
+
+.navbar-toggle{
+	border: 0px;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: #ffffff;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+	background-color: transparent;
+}
+
+.navbar-default .navbar-collapse{
+	    border: 0px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #B5142B;
+    float: right;
+    border: 0px;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active:hover{
+	background-color: #8E1123;
+}
+
+.dropdown-menu{
+	border: 0px;
+	background-color: #ECECEC;
+	box-shadow: none;
+}
+
+.dropdown-menu>li>a{
+	padding: 8px 20px;
+}
+
+@media (max-width: 767px){
+	.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+		color: #ffffff;
+    	background-color: transparent;
+	}
+	
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: #fff;
+	}
+	.container-fluid>.navbar-collapse{
+		margin-right: -30px;
+		margin-left: -30px;
+	}
+	
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
+		color: #aaaaaa;
+	}
+}
+	
+@media (max-width: 990px){
+	.sidebar{
+		padding: 5px 25px 55px 25px;
+   		margin: 30px 0px;
+	}
+}
