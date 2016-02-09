@@ -2,7 +2,7 @@ import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Location, Router} from 'angular2/router';
 
 import { PfadfinderMeinolfComponent } from './pfadfinder_meinolf';
-import { NewsComponent } from './news';
+import { NewsComponent } from './news.component';
 import { NewsArticleComponent } from './article';
 import { GroupPageComponent } from './group_page';
 import { LinksComponent } from './links';
@@ -10,7 +10,6 @@ import { FooterComponent} from './footer';
 import { ContactComponent } from './contact';
 import { ImprintComponent } from './imprint';
 import { LoginComponent } from './login';
-
 
 @Component({
   selector: 'my-app',
