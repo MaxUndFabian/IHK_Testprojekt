@@ -12,14 +12,13 @@ export class NewsService {
   getNews() {
     return this.http.get('api/news')
                     .map(res => <News[]> res.json())
-                    .do(data => console.log(data))
                     .catch(this.handleError);
   }
   
   private handleError (error: Response) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
-    console.error(error.json().error);
+    console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
 }

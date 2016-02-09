@@ -21,7 +21,6 @@ export class NewsComponent {
   }
   
   getNews() {
-    console.log(this._newsService.getNews());
     this._newsService.getNews().subscribe(
                      news => this.news = news,
                      error =>  this.errorMessage = <any>error);
