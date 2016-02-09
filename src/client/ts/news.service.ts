@@ -1,7 +1,7 @@
-import {Injectable, Inject} from 'angular2/core';
+import {Injectable, Inject}             from 'angular2/core';
 import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
-import {News} from './news-interface';
-import {Observable}     from 'rxjs/Observable';
+import {News}                           from './news-interface';
+import {Observable}                     from 'rxjs/Observable';
 
 
 @Injectable({
@@ -12,6 +12,13 @@ export class NewsService {
   getNews() {
     return this.http.get('api/news')
                     .map(res => <News[]> res.json())
+                    .catch(this.handleError);
+  }
+  
+  getSingleNews(id: number){
+      return this.http.get('api/news/' + id)
+                    .map(res => <News> res.json())
+                    //.do(data => console.log(data))
                     .catch(this.handleError);
   }
   
