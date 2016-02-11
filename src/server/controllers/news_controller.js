@@ -1,23 +1,29 @@
 var mysql = require('mysql');
+var dbConfig = require('../config/db_config.js');
 
 // First you need to create a connection to the db
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "pfadfinder_meinolf"
+  host: dbConfig.host,
+  user: dbConfig.user,
+  password: dbConfig.password,
+  database: dbConfig.database
 });
 
 module.exports.create = function(req, res){
     //TODO if user login in place, read username from session cookie
     //TODO check if user is logged in, otherwise he isn't allowed to create an article.
-	con.query("INSERT INTO Newsentries (title, content, user_username, tag_id) VALUES ('?', '?', '?', ?);", [req.body.title, req.body.content, req.body.username, req.body.tag_id], function(err, rows){
+	
+    process.stdout.write("create request body:");
+    console.log(req.body);
+    console.log();
+    /*con.query("INSERT INTO Newsentries (title, content, user_username, tag_id) VALUES ('?', '?', '?', ?);", [req.body.title, req.body.content, req.body.username, req.body.tag_id], function(err, rows){
         if(err){}
         if(Object.keys(rows).length == 0){
             res.sendStatus(400);
         }
         res.json(rows[0]);
-    });
+    });*/
+    res.sendStatus(400);
 }
 
 
@@ -40,7 +46,7 @@ module.exports.list = function(req, res){
        if(err){}
        //res.sendStatus(200);
        res.json(rows);
-       console.log(rows);
+       //console.log(rows);
     });
 }
 
@@ -52,7 +58,7 @@ module.exports.single = function(req, res){
             res.sendStatus(404);
         }
         res.json(rows[0]);
-        console.log(rows[0]);
+        //console.log(rows[0]);
     });
 }
 

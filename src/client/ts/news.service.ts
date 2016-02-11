@@ -1,11 +1,10 @@
-import {Injectable, Inject}             from 'angular2/core';
-import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
-import {News}                           from './news-interface';
-import {Observable}                     from 'rxjs/Observable';
+import {Injectable, Inject}                         from 'angular2/core';
+import {Http, Response, Headers, RequestOptions}    from 'angular2/http';
+import {News}                                       from './news.interface';
+import {Observable}                                 from 'rxjs/Observable';
 
 
 @Injectable({
-    providers: [HTTP_PROVIDERS]
 })
 export class NewsService {
   constructor(private http: Http) { }
@@ -20,6 +19,16 @@ export class NewsService {
                     .map(res => <News> res.json())
                     //.do(data => console.log(data))
                     .catch(this.handleError);
+  }
+  
+  addNews(title: string, content: string, tag_id) : Observable<News>{
+      let body = JSON.stringify({title, content, tag_id});
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      
+      return this.http.post('api/news', body, options)
+                      .map(res => <News> res.json())
+                      .catch(this.handleError);
   }
   
   private handleError (error: Response) {

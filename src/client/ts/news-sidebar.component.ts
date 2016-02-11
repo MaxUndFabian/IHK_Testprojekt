@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
-import {News} from './news-interface';
-import {NEWS} from './mock-news';
+import {News} from './news.interface';
 import {NewsService} from './news.service';
 
 @Component({
