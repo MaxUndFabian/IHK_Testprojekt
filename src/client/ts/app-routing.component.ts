@@ -1,15 +1,15 @@
 import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Location, Router} from 'angular2/router';
 
-import { PfadfinderMeinolfComponent } from './pfadfinder_meinolf';
+import { PfadfinderMeinolfComponent } from './pfadfinder_meinolf.component';
 import { NewsComponent } from './news.component';
-import { NewsArticleComponent } from './article';
-import { GroupPageComponent } from './group_page';
-import { LinksComponent } from './links';
-import { FooterComponent} from './footer';
-import { ContactComponent } from './contact';
-import { ImprintComponent } from './imprint';
-import { LoginComponent } from './login';
+import { NewsArticleComponent } from './article.component';
+import { GroupPageComponent } from './group_page.component';
+import { LinksComponent } from './links.component';
+import { FooterComponent} from './footer.component';
+import { ContactComponent } from './contact.component';
+import { ImprintComponent } from './imprint.component';
+import { LoginComponent } from './login.component';
 
 @Component({
   selector: 'my-app',

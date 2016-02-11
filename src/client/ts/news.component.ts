@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {News} from './news-interface';
+import {News} from './news.interface';
 import {NewsService} from './news.service';
 
 @Component({
@@ -13,7 +13,9 @@ import {NewsService} from './news.service';
 export class NewsComponent {
   news: News[];
   errorMessage : string;
-  constructor(private _router: Router, private _newsService: NewsService){}
+  constructor(private _router: Router, private _newsService: NewsService){
+      this._newsService.addNews("test", "content test", 1).subscribe();
+  }
     
   gotoArticle(id: number){
       let link = ['NewsArticle', {id: id}];

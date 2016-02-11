@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 
-import {News} from './news-interface';
+import {News} from './news.interface';
 import {NewsService} from './news.service';
 
 @Component({

@@ -1,9 +1,13 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var newsController = require('./server/controllers/news_controller');
 var app = express();
 
 app.use('/client', express.static('client'));
 app.use('/app', express.static('client/ts'));
+
+
+app.use(bodyParser());
 
 // 
 app.post('/api/news', newsController.create);
