@@ -14,7 +14,7 @@ import { LoginComponent } from './login.component';
 @Component({
   selector: 'my-app',
   templateUrl: 'client/html/navigation.html',
-  directives: [ROUTER_DIRECTIVES, FooterComponent],
+  directives: [ROUTER_DIRECTIVES, LoginComponent, FooterComponent],
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
@@ -52,11 +52,6 @@ import { LoginComponent } from './login.component';
     path: '/imprint',
     name: 'Imprint',
     component: ImprintComponent
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginComponent
   }
 ])
 export class AppRoutingComponent {
