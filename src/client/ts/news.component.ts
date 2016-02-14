@@ -14,7 +14,7 @@ export class NewsComponent {
   news: News[];
   errorMessage : string;
   constructor(private _router: Router, private _newsService: NewsService){
-      this._newsService.addNews("test", "content test", 1).subscribe();
+      //this._newsService.addNews("test", "content test", 1).subscribe();
   }
     
   gotoArticle(id: number){

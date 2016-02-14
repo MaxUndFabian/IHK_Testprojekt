@@ -16,11 +16,21 @@ app.use('/app', express.static('client/ts'));
 app.use(bodyParser());
 app.use(session({secret: 'JH3BFID73478H34JdfsBk873487'/*, cookie: {maxAge: 7200000}*/})); // 2 Stunden
 
+app.use(function(req, res, next){
+   console.log();
+   console.log();
+   console.log('session cookie: ');
+   console.log(req.session);
+   console.log();
+   console.log();
+   next();
+});
+
 // routing of my api
 app.post('/api/news', auth.requireLoginWithRole('Redakteur'), newsController.create);
 app.put('/api/news/:id', newsController.update)
 app.get('/api/news', newsController.list);
-app.get('/api/news/:id', newsController.single);
+app.get('/api/news/:id', auth.requireLogin, newsController.single);
 app.delete('/api/news/:id', newsController.delete);
 
 app.post('/api/login', loginController.login);

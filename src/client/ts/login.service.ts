@@ -7,23 +7,22 @@ import {Observable}                                 from 'rxjs/Observable';
 })
 export class LoginService {
   
-  loggedIn: boolean;
+  private loggedIn: boolean;
   
-  constructor(private http: Http) { 
-      this.loggedIn = false;
-  }
+  constructor(private http: Http) { }
   
   login(username: string, password: string) {
     let body = JSON.stringify({username, password});
-    console.log(body);
+    //console.log(body);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
       
     return this.http.post('api/login', body, options)
-                    .map(function(res){
-                        res.json();
-                        if(res.username){
-                            this.loggedIn = true;
+                    .map(res => res.json())
+                    .do((data) => {
+                        if(data.username){
+                            console.log('were logged in!');
+                            //console.log(data);
                         }
                     })
                     .catch(this.handleError);
@@ -36,15 +35,25 @@ export class LoginService {
                     .catch(this.handleError);
   }*/
   
-  isLoggedIn(title: string, content: string, tag_id): boolean{
-      return this.loggedIn;
+  isLoggedIn(): boolean{
+      return this.http.post('api/login')
+                    .map(res => res.json())
+                    .do((data) => {
+                        if(data.username){
+                            console.log('were logged in!');
+                            //console.log(data);
+                            this.loggedIn = true;
+                            return true;
+                        }
+                        return false;
+                    })
+                    .catch(this.handleError);
   }
   
   logout() {
       return this.http.get('api/logout')
                       .map(res => res.json())
                       .catch(this.handleError);
-      this.loggedIn = false;
   }
   
   private handleError (error: Response) {

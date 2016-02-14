@@ -20,7 +20,7 @@ module.exports.login = function(req, res){
     if(!sess.loggedIn){
         con.query("SELECT * FROM Users WHERE username = ? AND password = ?;", [username, password], function(err, rows){
             if(err){
-                // server error
+                // db server error
                 console.log(err);
                 res.sendStatus(500);
                 return;
@@ -42,6 +42,7 @@ module.exports.login = function(req, res){
     }
 }
 
-module.exports.logout = function(req){
+module.exports.logout = function(req, res){
     req.session.destroy();
+    res.sendStatus(200);
 }

@@ -1,10 +1,13 @@
-<!-- Button trigger modal -->
-<a data-toggle="modal" data-target="#myModal">
-  {{linkText}}
-</a>
+<!-- navigation right side entries-->
+<li>
+    <a *ngIf="username">Hallo {{username}}!</a>    
+</li>
+<li>
+    <a (click)="linkClicked()">{{linkText}}</a>
+</li>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

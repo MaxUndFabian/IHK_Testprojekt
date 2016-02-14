@@ -5,5 +5,5 @@ module.exports.login = function(req, res){
 }
 
 module.exports.logout = function(req, res){
-    loginHelper.logout(req);
+    loginHelper.logout(req, res);
 }

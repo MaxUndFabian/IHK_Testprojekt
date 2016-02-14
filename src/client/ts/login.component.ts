@@ -13,19 +13,56 @@ export class LoginComponent {
     input_username: string;
     input_password: string;
     username: string;
+    loggedIn: boolean;
     
     constructor(private _loginService: LoginService){
         this.linkText = 'Login';
+        this.updateLoginStatus();
+    }
+    
+    linkClicked(){
+        if(this.loggedIn){
+            this.logout();
+        }
+        else{
+            $('#loginModal').modal('show');
+        }
     }
     
     login(){
-        console.log(this.input_username + ' ' + this.input_password);
         this._loginService.login(this.input_username, this.input_password)
-                          .subscribe(function(res){
-                               this.username = res;
+                          .subscribe((res) => {
+                               //console.log(res);
+                               this.username = res.username;
                                this.linkText = 'Logout';
                                this.input_username = '';
-                               console.log('so far we come!');
+                               this.input_password = '';
+                               this.loggedIn = true;
+                               //console.log('so far we come!');
+                               $('#loginModal').modal('hide');
                           });
+    }
+    
+    logout(){
+        this._loginService.logout().subscribe();
+        this.linkText = 'Login';
+        this.username = null;
+        this.loggedIn = false;
+    }
+    
+    updateLoginStatus(){
+        this._loginService.isLoggedIn().subscribe((res)=> {
+           if(res){
+               this.loggedIn = true;
+               this.linkText = "Logout";
+               this._loginService.login("","").subscribe((res)=>{
+                   this.username = res.username;
+               })
+           }
+           else{
+               this.loggedIn = false;
+               this.linkText = 'Login';
+           }
+        });
     }
 }
