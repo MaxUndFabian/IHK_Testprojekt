@@ -16,14 +16,26 @@ module.exports.create = function(req, res){
     process.stdout.write("create request body:");
     console.log(req.body);
     console.log();
-    /*con.query("INSERT INTO Newsentries (title, content, user_username, tag_id) VALUES ('?', '?', '?', ?);", [req.body.title, req.body.content, req.body.username, req.body.tag_id], function(err, rows){
-        if(err){}
-        if(Object.keys(rows).length == 0){
+    
+    con.query("INSERT INTO Newsentries (title, content, user_username, tag_id) VALUES (?, ?, ?, ?);", [req.body.title, req.body.content, req.session.username, req.body.tag_id], function(err, rows){
+        if(err){
+            console.log(err)
+        }
+        else if(Object.keys(rows).length == 0){
             res.sendStatus(400);
         }
-        res.json(rows[0]);
-    });*/
-    res.sendStatus(400);
+        else{
+            console.log(rows);
+            con.query('SELECT * FROM Newsentries WHERE id=' + rows.insertId + '', function(err, rows){
+                if(err){}
+                if(Object.keys(rows).length == 0){
+                    res.sendStatus(404);
+                }
+                res.json(rows[0]);
+                //console.log(rows[0]);
+            });
+        }
+    });
 }
 
 
