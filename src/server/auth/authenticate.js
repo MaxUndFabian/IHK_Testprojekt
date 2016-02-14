@@ -25,7 +25,7 @@ module.exports.requireLoginWithRole = function(role){
     return function(req, res, next){
         var sess = req.session;
         if(sess.loggedIn){
-            con.query("SELECT r.title FROM Roles as r left join Users user on (r.id=user.role_id) WHERE user.username = '?';", [sess.username], function(err, rows){
+            con.query("SELECT r.title FROM Roles as r left join Users user on (r.id=user.role_id) WHERE user.username = ?;", [sess.username], function(err, rows){
                 if(err){
                     //TODO handle error
                     console.log("db error in requireLoginWithRole()");
@@ -33,13 +33,19 @@ module.exports.requireLoginWithRole = function(role){
                 }
                 // if user has required Role, grant access
                 // TODO check this with role_id or name ????????
+                
                 else if(rows[0].title == role || rows[0].title == "Administrator"){
                     next();
                 }
-                console.log(rows);
-                res.sendStatus(401);
+                else{
+                    console.log(rows);
+                    res.sendStatus(401);
+                    return;
+                }
             })
         }
-        res.sendStatus(401);
+        else{
+            res.sendStatus(401);                
+        }
     }
 }

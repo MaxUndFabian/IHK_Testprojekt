@@ -28,7 +28,7 @@ app.use(function(req, res, next){
 
 // routing of my api
 app.post('/api/news', auth.requireLoginWithRole('Redakteur'), newsController.create);
-app.put('/api/news/:id', newsController.update)
+app.put('/api/news/:id', newsController.update);
 app.get('/api/news', newsController.list);
 app.get('/api/news/:id', auth.requireLogin, newsController.single);
 app.delete('/api/news/:id', newsController.delete);
