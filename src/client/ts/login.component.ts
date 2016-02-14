@@ -13,6 +13,7 @@ export class LoginComponent {
     input_username: string;
     input_password: string;
     username: string;
+    role: string;
     loggedIn: boolean;
     
     constructor(private _loginService: LoginService){
@@ -34,6 +35,7 @@ export class LoginComponent {
                           .subscribe((res) => {
                                //console.log(res);
                                this.username = res.username;
+                               this.role = res.role;
                                this.linkText = 'Logout';
                                this.input_username = '';
                                this.input_password = '';
@@ -57,6 +59,7 @@ export class LoginComponent {
                this.linkText = "Logout";
                this._loginService.login("","").subscribe((res)=>{
                    this.username = res.username;
+                   this.role = res.role;
                })
            }
            else{
