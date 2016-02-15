@@ -34,9 +34,14 @@ export class NewsComponent {
   }
   
   getNews() {
-    this._newsService.getNews().subscribe(
-                     news => this.news = news,
-                     error =>  this.errorMessage = <any>error);
+    this._newsService.getNews().subscribe((news, error) =>{
+                                    this.news = news;
+                                    this.news.forEach(element => {
+                                        element.creationDate = new Date(element.creationDate);
+                                        element.lastModifiedDate = new Date(element.lastModifiedDate);
+                                    });
+                                    this.errorMessage = <any>error;
+                                });
   }
   
   openCreateNews(){
