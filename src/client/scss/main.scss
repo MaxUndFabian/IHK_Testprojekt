@@ -1,4 +1,14 @@
 @import 'colors';
+@import 'fonts';
+
+h1, h2, h3, h4, h5{
+    font-family: $heading_font;
+}
+p{
+    font-family: $content_font;
+    word-spacing: 4px;
+}
 
 @import 'modals';
 @import 'forms';
+@import 'news';

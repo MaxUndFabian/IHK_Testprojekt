@@ -31,7 +31,7 @@ app.use(function(req, res, next){
 app.post('/api/news', auth.requireLoginWithRole('Redakteur'), newsController.create);
 app.put('/api/news/:id', newsController.update);
 app.get('/api/news', newsController.list);
-app.get('/api/news/:id', auth.requireLogin, newsController.single);
+app.get('/api/news/:id', newsController.single);
 app.delete('/api/news/:id', newsController.delete);
 
 app.post('/api/login', loginController.login);

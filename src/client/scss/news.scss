@@ -1,0 +1,19 @@
+.news{
+    article{
+        h3{
+            &:hover{
+                color: $link_color_hover;
+                cursor: pointer;
+            }
+        }
+        span{
+            font-size: 12px;
+            margin: 4px 0 10px 0;
+            display: block;
+        }
+        p{
+            font-size: 14px;
+            line-height: 24px;
+        }
+    }
+}

@@ -1,24 +1,16 @@
 <div class="container">
     <div class="row">
-        <div class="col col-md-8" id="content">
-            <h2>News</h2>
+        <div class="col col-md-8 col-md-offset-2 news" id="content">
+            <h2>Aktuelles Test</h2>
             <a class="btn btn-info btn-lg" *ngIf="loggedIn" (click)="openCreateNews()">Neuer News-Beitrag</a>
             <div *ngIf="errorMessage" class="alert alert-danger">
                 <strong>Error!</strong> {{errorMessage}}
             </div>
-            <article *ngFor="#new of news | arraySort:'-creationDate'">
-                <div class="col col-md-8 col-sm-8 col-xs-8 disablePadding">                     
-                    <h3 (click)="gotoArticle(new.id)">{{new.title}} - {{new.tag_name}}</h3>
-                </div>
-                <div class="col col-md-4 col-sm-4 col-xs-4 disablePadding"> 
-                    <div class="date">
-                        <div class="month_day">Jan 29</div>
-                        <div class="year">2016</div>
-                    </div>
-                </div>
-                <p>{{new.content}}</p>
+            <article *ngFor="#new of news | arraySort:'-creationDate'">                     
+                <h3 (click)="gotoArticle(new.id)">{{new.title}}</h3>
+                <span class="info">{{new.username}} - {{new.tag_name}} - {{new.creationDate | date:"ddMMyyhhmm"}}</span>
+                <p class="article_content">{{new.content}}</p>
             </article>
-            
         </div>
     </div>
 </div>

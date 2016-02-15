@@ -1,3 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Oswald:700);
+h1, h2, h3, h4, h5 {
+  font-family: "Oswald", sans-serif; }
+
+p {
+  font-family: "Roboto Slab", serif;
+  word-spacing: 4px; }
+
 .modal .modal-content {
   border-radius: 0px; }
 .modal .modal-header {
@@ -12,3 +21,14 @@ input, textarea, select {
 textarea {
   height: 150px;
   resize: none; }
+
+.news article h3:hover {
+  color: #8E1123;
+  cursor: pointer; }
+.news article span {
+  font-size: 12px;
+  margin: 4px 0 10px 0;
+  display: block; }
+.news article p {
+  font-size: 14px;
+  line-height: 24px; }
