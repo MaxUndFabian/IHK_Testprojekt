@@ -1,1 +1,14 @@
+.modal .modal-content {
+  border-radius: 0px; }
+.modal .modal-header {
+  border-radius: 0px;
+  background: #003056;
+  color: #ffffff; }
 
+input, textarea, select {
+  width: 100%;
+  margin: 5px 0px; }
+
+textarea {
+  height: 150px;
+  resize: none; }

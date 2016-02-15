@@ -18,6 +18,7 @@ export class NewsComponent {
   errorMessage : string;
   input_title: string;
   input_content: string;
+  input_tag_id: number;
   
   constructor(private _router: Router, private _newsService: NewsService){
       this.input_title = '';
@@ -37,14 +38,17 @@ export class NewsComponent {
   
   openCreateNews(){
       $('#newsModal').modal('show');
-      this._newsService.getTags().subscribe(
-                        tags => this.tags = tags,
-                        error => this.errorMessage = <any>error);
+      this._newsService.getTags().subscribe((tags, error)=>{
+                                    this.tags = tags;
+                                    console.log(this.tags);
+                                    this.errorMessage = <any>error;
+                                 }
+                        );
   }
   
   createNews(){
       if(this.input_title != '' && this.input_content != ''){
-          this._newsService.addNews(this.input_title, this.input_content, 1).subscribe((res) => {
+          this._newsService.addNews(this.input_title, this.input_content, this.input_tag_id).subscribe((res) => {
               this.news.push(res);
               $('#newsModal').modal('hide');
               this.input_title = '';

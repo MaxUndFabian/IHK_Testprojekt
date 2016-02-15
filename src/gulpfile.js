@@ -19,7 +19,7 @@ var reload = browserSync.reload;
             port: 7000,
 	});
 
-        gulp.watch('app/scss/*.scss', ['sass']);
+        gulp.watch('client/scss/*.scss', ['sass']);
     });
     
     gulp.task('nodemon', function(cb){
