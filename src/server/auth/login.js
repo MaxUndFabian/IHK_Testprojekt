@@ -28,7 +28,7 @@ module.exports.login = function(req, res){
             console.log(rows);
             if(!rows || !rows[0]){
                 // invalid combination of username and password
-                res.sendStatus(400);
+                res.json({});
                 return;
             }
             //success

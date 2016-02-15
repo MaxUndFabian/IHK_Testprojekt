@@ -1,4 +1,6 @@
 import {Component} from 'angular2/core';
+import {Router} from 'angular2/router';
+
 import {LoginService} from './login.service';
 
 @Component({
@@ -14,16 +16,16 @@ export class LoginComponent {
     input_password: string;
     username: string;
     role: string;
-    loggedIn: boolean;
     
-    constructor(private _loginService: LoginService){
+    constructor(private _loginService: LoginService, private _router: Router){
         this.linkText = 'Login';
         this.updateLoginStatus();
     }
     
     linkClicked(){
-        if(this.loggedIn){
+        if(localStorage.loggedIn == "true"){
             this.logout();
+            localStorage.loggedIn = false;
         }
         else{
             $('#loginModal').modal('show');
@@ -35,13 +37,21 @@ export class LoginComponent {
                           .subscribe((res) => {
                                //console.log(res);
                                this.username = res.username;
+                               localStorage.username = res.username;
+                               
                                this.role = res.role;
+                               localStorage.role = res.role;
+                               
                                this.linkText = 'Logout';
                                this.input_username = '';
                                this.input_password = '';
-                               this.loggedIn = true;
-                               //console.log('so far we come!');
+                               
+                               localStorage.loggedIn = true;
                                $('#loginModal').modal('hide');
+                               
+                               //TODO reload the route, or navigate to specific route,
+                               // otherwise elements, that require login won't be displayed or will still be displayed
+                               this._router.navigateByUrl('/');
                           });
     }
     
@@ -49,13 +59,14 @@ export class LoginComponent {
         this._loginService.logout().subscribe();
         this.linkText = 'Login';
         this.username = null;
-        this.loggedIn = false;
+        localStorage.clear();
+        this._router.navigateByUrl('/');
     }
     
     updateLoginStatus(){
         this._loginService.isLoggedIn().subscribe((res)=> {
-           if(res){
-               this.loggedIn = true;
+           if(res.username){
+               localStorage.loggedIn = true;
                this.linkText = "Logout";
                this._loginService.login("","").subscribe((res)=>{
                    this.username = res.username;
@@ -63,7 +74,7 @@ export class LoginComponent {
                })
            }
            else{
-               this.loggedIn = false;
+               localStorage.loggedIn = false;
                this.linkText = 'Login';
            }
         });
