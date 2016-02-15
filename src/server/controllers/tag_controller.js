@@ -10,7 +10,7 @@ var con = mysql.createConnection({
 });
 
 module.exports.list = function(req, res){
-    con.query('SELECT title FROM Tags;', function(err, rows){
+    con.query('SELECT * FROM Tags;', function(err, rows){
         if(err){}
         res.json(rows);
     })
