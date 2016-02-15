@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var newsController = require('./server/controllers/news_controller');
+var tagController = require('./server/controllers/tag_controller');
 var loginController = require('./server/controllers/login_controller');
 
 var auth = require('./server/auth/authenticate');
@@ -35,6 +36,8 @@ app.delete('/api/news/:id', newsController.delete);
 
 app.post('/api/login', loginController.login);
 app.get('/api/logout', loginController.logout);
+
+app.get('/api/tags', auth.requireLoginWithRole('Redakteur'), tagController.list);
 
 
 app.use(function(req, res){

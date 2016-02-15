@@ -14,5 +14,11 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "mysql": "^2.10.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-ruby-sass": "^2.0.6"
   }
 }

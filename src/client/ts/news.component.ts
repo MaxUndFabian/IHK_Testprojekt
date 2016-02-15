@@ -14,6 +14,7 @@ import { DateSortPipe } from './date_sort.pipe';
 })
 export class NewsComponent {
   news: Array<News>[];
+  tags: Array<any>[];
   errorMessage : string;
   input_title: string;
   input_content: string;
@@ -32,6 +33,13 @@ export class NewsComponent {
     this._newsService.getNews().subscribe(
                      news => this.news = news,
                      error =>  this.errorMessage = <any>error);
+  }
+  
+  openCreateNews(){
+      $('#newsModal').modal('show');
+      this._newsService.getTags().subscribe(
+                        tags => this.tags = tags,
+                        error => this.errorMessage = <any>error);
   }
   
   createNews(){
