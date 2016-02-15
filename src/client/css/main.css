@@ -22,6 +22,9 @@ textarea {
   height: 150px;
   resize: none; }
 
+.news h2 {
+  margin-bottom: 25px;
+  display: block; }
 .news article h3:hover {
   color: #8E1123;
   cursor: pointer; }

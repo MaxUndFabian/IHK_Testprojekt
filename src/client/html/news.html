@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-8 col-md-offset-2 news" id="content">
-            <h2>Aktuelles Test</h2>
+            <h2>Aktuelles</h2>
             <a class="btn btn-info btn-lg" *ngIf="loggedIn" (click)="openCreateNews()">Neuer News-Beitrag</a>
             <div *ngIf="errorMessage" class="alert alert-danger">
                 <strong>Error!</strong> {{errorMessage}}
