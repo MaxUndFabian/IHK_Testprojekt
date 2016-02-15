@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {News} from './news.interface';
 import {NewsService} from './news.service';
+import {LoginService} from './login.service';
 import { DateSortPipe } from './date_sort.pipe';
 
 @Component({
@@ -9,7 +10,7 @@ import { DateSortPipe } from './date_sort.pipe';
   selector: 'news-meinolf',
   // Location of the template for this component
   templateUrl: 'client/html/news.html',
-  providers: [NewsService],
+  providers: [NewsService, LoginService],
   pipes: [DateSortPipe]
 })
 export class NewsComponent {
@@ -19,10 +20,12 @@ export class NewsComponent {
   input_title: string;
   input_content: string;
   input_tag_id: number;
+  loggedIn: boolean;
   
-  constructor(private _router: Router, private _newsService: NewsService){
+  constructor(private _router: Router, private _newsService: NewsService, private _loginService: LoginService){
       this.input_title = '';
       this.input_content = '';
+      this.loggedIn = _loginService.loggedIn();
   }
     
   gotoArticle(id: number){

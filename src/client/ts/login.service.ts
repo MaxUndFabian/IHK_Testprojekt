@@ -7,8 +7,6 @@ import {Observable}                                 from 'rxjs/Observable';
 })
 export class LoginService {
   
-  private loggedIn: boolean;
-  
   constructor(private http: Http) { }
   
   login(username: string, password: string) {
@@ -35,19 +33,25 @@ export class LoginService {
                     .catch(this.handleError);
   }*/
   
-  isLoggedIn(): boolean{
+  isLoggedIn(){
       return this.http.post('api/login')
                     .map(res => res.json())
                     .do((data) => {
                         if(data.username){
                             console.log('were logged in!');
                             //console.log(data);
-                            this.loggedIn = true;
                             return true;
                         }
                         return false;
                     })
                     .catch(this.handleError);
+  }
+  
+  loggedIn(): boolean{
+      if(localStorage.loggedIn == "true"){
+          return true;
+      }
+      return false;
   }
   
   logout() {
@@ -60,6 +64,6 @@ export class LoginService {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
     console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
+    return Observable.throw(error || 'Server error');
   }
 }
