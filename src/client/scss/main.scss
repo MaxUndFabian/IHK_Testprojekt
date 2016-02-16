@@ -1,14 +1,61 @@
 @import 'colors';
 @import 'fonts';
 
-h1, h2, h3, h4, h5{
-    font-family: $heading_font;
+body{
+    font-family: $main_font;
+    color: $black;
 }
+
+h1, h2, h3, h4, h5, h6{
+    font-family: $black;
+    font-weight: 400;
+}
+
+h3{
+	margin: 0px;
+}
+
+a{
+	color: $link_color;
+    cursor: pointer;
+}
+
+a:hover, a:focus{
+	color: $link_color_hover;
+}
+
 p{
-    font-family: $content_font;
+    font-family: $main_font;
     word-spacing: 4px;
 }
 
+button a{
+	color: $white;
+}
+
+button a:hover,button a:focus{
+	color: #F1F1F1;
+	text-decoration: none;
+}
+
+.container{
+	max-width: 970px;
+}
+
+#content{
+	padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.disablePadding{
+	padding: 0px;
+}
+
+@import 'header';
+@import 'navigation';
 @import 'modals';
+@import 'buttons';
+@import 'sidebar';
 @import 'forms';
 @import 'news';
+@import 'footer';

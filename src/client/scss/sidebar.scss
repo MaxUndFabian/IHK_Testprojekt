@@ -1,0 +1,26 @@
+article{
+    margin-bottom: 40px;
+}
+
+.sidebar{
+	padding-bottom: 25px;
+}
+
+.news_divider{
+	height: 60px;
+}
+
+.border_right{
+    border-right: 1px solid #F1F1F1;
+}
+
+@media (max-width: 990px){
+	.sidebar{
+		padding: 5px 25px 55px 25px;
+   		margin: 30px 0px;
+	}
+    
+    .border_right{
+        border: none;
+    }
+}
