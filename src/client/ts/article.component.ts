@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, Router} from 'angular2/router';
 
 import {News} from './news.interface';
 import {NewsService} from './news.service';
@@ -16,15 +16,25 @@ export class NewsArticleComponent {
   singleNews: News;
   errorMessage: string;
   
-  constructor(params: RouteParams, private _newsService: NewsService){
+  constructor(params: RouteParams, private _newsService: NewsService, private _router: Router){
       this.id = params.get('id');
       this.singleNews = new News(0, "", "", null, null, "", "");
   }
   
   getSingleNews(id: number){
-      this._newsService.getSingleNews(id).subscribe(
-                     news => this.singleNews = news,
-                     error =>  this.errorMessage = <any>error);
+      this._newsService.getSingleNews(id).subscribe((news, error) => {
+                                            this.singleNews = news;
+                                            this.singleNews.creationDate = new Date(this.singleNews.creationDate);
+                                            this.errorMessage = <any>error;
+                                         })
+                     
+  }
+  
+  delete(){
+      this._newsService.deleteNews(this.singleNews.id).subscribe(() => {
+          let link = ['News'];
+          this._router.navigate(link);
+      });
   }
   
   ngOnInit() {

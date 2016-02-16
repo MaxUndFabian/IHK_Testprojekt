@@ -1,16 +1,11 @@
 <div class="container">
     <div class="row">
-        <div class="col col-md-8" id="content">
+        <div class="col col-md-8 col-md-offset-2 news" id="content">
+            <a (click)="delete()">Löschen</a>
             <article>
-                <div class="col col-md-8 col-sm-8 col-xs-8 disablePadding">                     
-                    <h3>{{singleNews.title}}</h3>
-                </div>
-                <div class="col col-md-4 col-sm-4 col-xs-4 disablePadding"> 
-                    <div class="date">
-                    <div class="month_day">Jan 29</div>
-                    <div class="year">2016</div></div>
-                </div>
-                <p>{{singleNews.content}}</p>
+                <h3>{{singleNews.title}}</h3>
+                <span class="info">{{singleNews.username}} - {{singleNews.tag_name}} - {{singleNews.creationDate | date:"ddMMyyhhmm"}}</span>
+                <p class="article_content">{{singleNews.content}}</p>
             </article>
         </div>
         <div class="col col-md-4" id="content"></div>

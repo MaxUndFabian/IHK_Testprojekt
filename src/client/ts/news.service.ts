@@ -31,6 +31,11 @@ export class NewsService {
                       .catch(this.handleError);
   }
   
+  deleteNews(id: number){
+      return this.http.delete('api/news/' + id)
+                      .catch(this.handleError);
+  }
+  
   getTags(){
       return this.http.get('api/tags')
                       .map(res => res.json())
