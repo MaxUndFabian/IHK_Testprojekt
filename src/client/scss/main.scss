@@ -61,6 +61,12 @@ button a:hover,button a:focus{
 	padding: 0px;
 }
 
+@media (max-width: 990px){
+    #footer_padding{
+        padding-bottom: 220px;
+    }
+}
+
 @import 'header';
 @import 'navigation';
 @import 'modals';
