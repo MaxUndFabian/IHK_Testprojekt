@@ -64,8 +64,10 @@ module.exports.list = function(req, res){
 
 
 module.exports.single = function(req, res){
-	con.query('SELECT * FROM Newsentries WHERE id=' + req.params.id + '', function(err, rows){
-        if(err){}
+	con.query('SELECT n.id, n.title, n.content, n.creationDate, n.lastModifiedDate, n.user_username username, tag.title tag_name FROM Newsentries as n left join Tags tag on (n.tag_id=tag.id) WHERE n.id=' + req.params.id + '', function(err, rows){
+        if(err){
+            console.log(err);
+        }
         if(Object.keys(rows).length == 0){
             res.sendStatus(404);
         }
@@ -76,5 +78,32 @@ module.exports.single = function(req, res){
 
 
 module.exports.delete = function(req, res){
+    con.query('SELECT id FROM Newsentries WHERE id=? AND user_username=?', [req.params.id, req.session.username], function(err, rows){
+        if(err){
+            console.log(err);
+            res.sendStatus(500);
+        }
+        else{
+            if(rows){
+                con.query('DELETE FROM Newsentries WHERE id=?;', [req.params.id], function(err, rows){
+                    if(err){
+                        console.log(err);
+                        res.sendStatus(500);
+                    }
+                    else{
+                        if(rows){
+                            res.sendStatus(200);
+                        }
+                        else{
+                            res.sendStatus(400);
+                        }
+                    }
+                });
+            }
+            else{
+                res.sendStatus(400);
+            }
+        }
+    })
 	
 }

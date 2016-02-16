@@ -34,14 +34,26 @@ export class NewsComponent {
   }
   
   getNews() {
-    this._newsService.getNews().subscribe((news, error) =>{
+    this._newsService.getNews().subscribe((news, error) => {
                                     this.news = news;
                                     this.news.forEach(element => {
                                         element.creationDate = new Date(element.creationDate);
                                         element.lastModifiedDate = new Date(element.lastModifiedDate);
+                                        element.content = this.contentPreview(element.content);
                                     });
                                     this.errorMessage = <any>error;
                                 });
+  }
+  
+  contentPreview(content: string){
+      content = content.substring(0, 330);
+      if(content.lastIndexOf(' ') != -1 && content.length == 330){
+        content = content.substring(0, content.lastIndexOf(' '));
+        if(!(content.length < 300)){
+          content += '....';
+        }
+      }
+      return content;
   }
   
   openCreateNews(){

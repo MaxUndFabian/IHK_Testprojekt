@@ -32,7 +32,7 @@ app.post('/api/news', auth.requireLoginWithRole('Redakteur'), newsController.cre
 app.put('/api/news/:id', newsController.update);
 app.get('/api/news', newsController.list);
 app.get('/api/news/:id', newsController.single);
-app.delete('/api/news/:id', newsController.delete);
+app.delete('/api/news/:id', auth.requireLoginWithRole('Redakteur'), newsController.delete);
 
 app.post('/api/login', loginController.login);
 app.get('/api/logout', loginController.logout);

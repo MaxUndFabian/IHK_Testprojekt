@@ -7,7 +7,7 @@
                 <strong>Error!</strong> {{errorMessage}}
             </div>
             <article *ngFor="#new of news | arraySort:'-creationDate'">                     
-                <h3 (click)="gotoArticle(new.id)">{{new.title}}</h3>
+                <h3 (click)="gotoArticle(new.id)" class="link">{{new.title}}</h3>
                 <span class="info">{{new.username}} - {{new.tag_name}} - {{new.creationDate | date:"ddMMyyhhmm"}}</span>
                 <p class="article_content">{{new.content}}</p>
             </article>
