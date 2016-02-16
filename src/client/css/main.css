@@ -17,11 +17,14 @@ a {
   cursor: pointer; }
 
 a:hover, a:focus {
-  color: #8E1123; }
+  color: #8E1123;
+  text-decoration: none; }
 
 p {
   font-family: "Open Sans";
-  word-spacing: 4px; }
+  word-spacing: 4px;
+  text-align: justify;
+  word-wrap: break-word; }
 
 button a {
   color: #FFFFFF; }
@@ -153,17 +156,19 @@ header {
   color: #ECECEC;
   opacity: 1; }
 
-article {
-  margin-bottom: 40px; }
-
 .sidebar {
   padding-bottom: 25px; }
 
 .news_divider {
-  height: 60px; }
+  height: 30px; }
 
 .border_right {
   border-right: 1px solid #F1F1F1; }
+
+.read_more:hover {
+  cursor: pointer; }
+  .read_more:hover .link {
+    color: #8E1123; }
 
 @media (max-width: 990px) {
   .sidebar {
@@ -182,7 +187,10 @@ textarea {
 
 .news h2 {
   margin-bottom: 25px;
-  display: block; }
+  display: block;
+  margin-left: -2px; }
+.news h3 {
+  margin-left: -1px; }
 .news article .link:hover {
   color: #8E1123;
   cursor: pointer; }
