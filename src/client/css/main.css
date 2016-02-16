@@ -32,6 +32,12 @@ textarea {
   font-size: 12px;
   margin: 4px 0 10px 0;
   display: block; }
+  .news article span a {
+    float: right;
+    margin-left: 10px; }
+    .news article span a:after {
+      clear: both; }
 .news article p {
   font-size: 14px;
-  line-height: 24px; }
+  line-height: 24px;
+  text-align: justify; }

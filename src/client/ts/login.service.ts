@@ -54,6 +54,10 @@ export class LoginService {
       return false;
   }
   
+  username(): String{
+      return localStorage.username;
+  }
+  
   logout() {
       return this.http.get('api/logout')
                       .map(res => res.json())

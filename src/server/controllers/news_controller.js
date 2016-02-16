@@ -26,7 +26,7 @@ module.exports.create = function(req, res){
         }
         else{
             console.log(rows);
-            con.query('SELECT * FROM Newsentries WHERE id=' + rows.insertId + '', function(err, rows){
+            con.query('SELECT n.id, n.title, n.content, n.creationDate, n.lastModifiedDate, n.user_username username, tag.title tag_name FROM Newsentries as n left join Tags tag on (n.tag_id=tag.id) WHERE n.id=' + rows.insertId + '', function(err, rows){
                 if(err){}
                 if(Object.keys(rows).length == 0){
                     res.sendStatus(404);
@@ -42,7 +42,7 @@ module.exports.create = function(req, res){
 module.exports.update = function(req, res){
     // for now, every field needs to be sent, otherwise it will be empty afterwards
     //TODO check if it makes sense, to only send updated fields, then it needs to be checked here
-	con.query("UPDATE Newsentries SET title = '?', content = '?', tag_id = ? WHERE id = ?", [req.body.title, req.body.content, req.body.tag_id, req.body.id], function(err, rows){
+	con.query("UPDATE Newsentries SET title = ?, content = ?, tag_id = ? WHERE id = ?", [req.body.title, req.body.content, req.body.tag_id, req.body.id], function(err, rows){
         if(err){}
         if(Object.keys(rows).length == 0){
             res.sendStatus(400);

@@ -69,6 +69,8 @@ export class NewsComponent {
   createNews(){
       if(this.input_title != '' && this.input_content != ''){
           this._newsService.addNews(this.input_title, this.input_content, this.input_tag_id).subscribe((res) => {
+              res.creationDate = new Date(res.creationDate);
+              res.lastModifiedDate = new Date(res.lastModifiedDate);
               this.news.push(res);
               $('#newsModal').modal('hide');
               this.input_title = '';

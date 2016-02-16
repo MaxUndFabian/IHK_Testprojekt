@@ -14,10 +14,18 @@
             font-size: 12px;
             margin: 4px 0 10px 0;
             display: block;
+            a{
+                float: right;
+                margin-left: 10px;
+                &:after{
+                    clear: both;
+                }
+            }
         }
         p{
             font-size: 14px;
             line-height: 24px;
+            text-align: justify;
         }
     }
 }
