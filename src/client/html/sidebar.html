@@ -1,9 +1,8 @@
 <div class="news">
-    <h2>News</h2>
+    <h2>Aktuelles</h2>
     <article *ngFor="#new of news | arraySort:'-creationDate'" (click)="gotoArticle(new.id)" class="read_more">              
         <h3 class="link">{{new.title}}</h3>
         <span class="info">{{new.username}} - {{new.tag_name}} - {{new.creationDate | date:"ddMMyyhhmm"}}</span>
         <p class="article_content">{{new.content}}</p>
-        <div class="news_divider"></div>
     </article>
 </div>

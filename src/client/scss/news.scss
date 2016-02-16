@@ -3,11 +3,18 @@
         margin-bottom: 25px;
         display: block;
         margin-left: -2px;
+        border-bottom: 1px solid black;
+        .new_button{
+            float: right;
+            font-size: 16px;
+            line-height: 33px;
+        }
     }
     h3{
         margin-left: -1px;
     }
     article{
+        margin-bottom: 25px;
         .link{
             &:hover{
                 color: $link_color_hover;
