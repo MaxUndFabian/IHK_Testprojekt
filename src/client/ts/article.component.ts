@@ -76,7 +76,6 @@ export class NewsArticleComponent {
   getComments(newsId: number){
       this._commentService.getComments(newsId).subscribe((res, err)=>{
           this.comments = res;
-          console.log(res);
           this.errorMessage = <any>err;
       })
   }

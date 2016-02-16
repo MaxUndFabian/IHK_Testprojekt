@@ -162,12 +162,6 @@ header {
   color: #ECECEC;
   opacity: 1; }
 
-.sidebar {
-  padding-bottom: 25px; }
-
-.news_divider {
-  height: 30px; }
-
 .border_right {
   border-right: 1px solid #F1F1F1; }
 
@@ -194,25 +188,32 @@ textarea {
 .news h2 {
   margin-bottom: 25px;
   display: block;
-  margin-left: -2px; }
+  margin-left: -2px;
+  border-bottom: 1px solid black; }
+  .news h2 .new_button {
+    float: right;
+    font-size: 16px;
+    line-height: 33px; }
 .news h3 {
   margin-left: -1px; }
-.news article .link:hover {
-  color: #8E1123;
-  cursor: pointer; }
-.news article span {
-  font-size: 12px;
-  margin: 4px 0 10px 0;
-  display: block; }
-  .news article span a {
-    float: right;
-    margin-left: 10px; }
-    .news article span a:after {
-      clear: both; }
-.news article p {
-  font-size: 14px;
-  line-height: 24px;
-  text-align: justify; }
+.news article {
+  margin-bottom: 25px; }
+  .news article .link:hover {
+    color: #8E1123;
+    cursor: pointer; }
+  .news article span {
+    font-size: 12px;
+    margin: 4px 0 10px 0;
+    display: block; }
+    .news article span a {
+      float: right;
+      margin-left: 10px; }
+      .news article span a:after {
+        clear: both; }
+  .news article p {
+    font-size: 14px;
+    line-height: 24px;
+    text-align: justify; }
 
 footer {
   background-color: #252525;
