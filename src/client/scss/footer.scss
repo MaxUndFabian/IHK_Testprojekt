@@ -1,0 +1,44 @@
+footer{
+	background-color: #252525;
+	padding: 30px;
+}
+
+footer nav ul{
+	float: right;
+    padding: 44px 0px;
+    
+    li{
+        display: inline;
+        
+        &:after{
+            content: " / ";
+            margin: 5px;
+            color: #717171;
+        }
+        
+        &:last-child::after{
+	       content: "";
+        }
+    }
+}
+
+footer p{
+    color: $light_grey;
+    margin-left: 8px;
+    font-family: 'Open Sans';
+}
+
+footer a{
+	color: $light_grey;
+    font-style: normal;
+    letter-spacing: 1px;
+    
+    &:hover, &:focus{
+	   color: $light_grey_hover;
+	   text-decoration: none;
+    }
+}
+
+footer .img-responsive{
+	max-width: 115px;
+}

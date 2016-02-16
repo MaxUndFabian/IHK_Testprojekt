@@ -1,0 +1,21 @@
+.btn-primary {
+    color: #fff;
+    background-color: $link_color;
+    float: right;
+    border: 0px;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active:hover{
+	background-color: $link_color_hover;
+}
+
+.close{
+    color: $white;
+    text-shadow: none;
+    opacity: 1;
+}
+
+.close:focus, .close:hover{
+    color: $light_grey;
+    opacity: 1;
+}

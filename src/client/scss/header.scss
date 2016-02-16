@@ -1,0 +1,20 @@
+#logo{
+    margin: 60px;
+}
+
+header{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(12, 12, 12, 0.62)), url('../img/header.jpg');
+    background-size: 100% auto;
+    text-align: center;
+    background-attachment: fixed;
+}
+
+.header_margin{
+    margin-bottom: 50px;
+}
+
+@media (max-width: 767px){
+    header{
+        background-size: inherit;
+    }
+}
