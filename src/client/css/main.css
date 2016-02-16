@@ -191,8 +191,7 @@ textarea {
 .news h2 {
   margin-bottom: 25px;
   display: block;
-  margin-left: -2px;
-  border-bottom: 1px solid black; }
+  margin-left: -2px; }
   .news h2 .new_button {
     float: right;
     font-size: 16px;
