@@ -4,25 +4,28 @@ import {RouteParams, Router} from 'angular2/router';
 import {News} from './news.interface';
 import {NewsService} from './news.service';
 import {LoginService} from './login.service';
+import {CommentService} from './comment.service';
 
 @Component({
   // Declare the tag name in index.html to where the component attaches
   selector: 'news-article-meinolf',
   // Location of the template for this component
   templateUrl: 'client/html/article.html',
-  providers: [NewsService, LoginService]
+  providers: [NewsService, LoginService, CommentService]
 })
 export class NewsArticleComponent {
   id: number;
   singleNews: News;
+  comments: Array<any>[];
   errorMessage: string;
   input_title: string;
   input_content: string;
   input_tag_id: number;
+  input_comment: string;
   tags: Array<any>[];
   loggedIn: boolean;
   
-  constructor(params: RouteParams, private _newsService: NewsService, private _router: Router, private _loginService: LoginService){
+  constructor(params: RouteParams, private _newsService: NewsService, private _router: Router, private _loginService: LoginService, private _commentService: CommentService){
       this.id = params.get('id');
       this.singleNews = new News(0, "", "", null, null, "", "");
       this.loggedIn = _loginService.loggedIn();
@@ -33,6 +36,7 @@ export class NewsArticleComponent {
                                             this.singleNews = news;
                                             this.singleNews.creationDate = new Date(this.singleNews.creationDate);
                                             this.errorMessage = <any>error;
+                                            this.getComments(this.singleNews.id);
                                          })
                      
   }
@@ -65,6 +69,32 @@ export class NewsArticleComponent {
              this.getSingleNews(this.singleNews.id);
              $('#newsModal').modal('hide');
           });
+      }
+  }
+  
+  
+  getComments(newsId: number){
+      this._commentService.getComments(newsId).subscribe((res, err)=>{
+          this.comments = res;
+          console.log(res);
+          this.errorMessage = <any>err;
+      })
+  }
+  
+  createComment(){
+      if(this.input_comment == ''){
+          return;
+      }
+      this._commentService.createComment(this.input_comment, this.singleNews.id).subscribe(() => {
+          this.input_comment = '';
+          this.getComments(this.singleNews.id);
+      });
+  }
+  
+  keyEventHandler(event){
+      //console.log(event.keyIdentifier);
+      if(event.keyIdentifier == "Enter"){
+          this.createComment();
       }
   }
   

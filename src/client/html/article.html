@@ -10,6 +10,11 @@
                 </span>
                 <p class="article_content">{{singleNews.content}}</p>
             </article>
+            
+            <div>
+                <p *ngFor="#comment of comments">@{{comment.username}} - {{comment.content}}</p>
+                <input type="text" [(ngModel)]="input_comment" (keypress)="keyEventHandler($event)" placeholder="Was hälst du davon?">
+            </div>
         </div>
         <div class="col col-md-4" id="content"></div>
     </div>

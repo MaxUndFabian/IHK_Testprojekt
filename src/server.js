@@ -5,6 +5,7 @@ var session = require('express-session');
 var newsController = require('./server/controllers/news_controller');
 var tagController = require('./server/controllers/tag_controller');
 var loginController = require('./server/controllers/login_controller');
+var commentController = require('./server/controllers/comments_controller');
 
 var auth = require('./server/auth/authenticate');
 
@@ -28,16 +29,24 @@ app.use(function(req, res, next){
 });
 
 // routing of my api
+
+//news
 app.post('/api/news', auth.requireLoginWithRole('Redakteur'), newsController.create);
 app.put('/api/news/:id', newsController.update);
 app.get('/api/news', newsController.list);
 app.get('/api/news/:id', newsController.single);
 app.delete('/api/news/:id', auth.requireLoginWithRole('Redakteur'), newsController.delete);
 
+//login
 app.post('/api/login', loginController.login);
 app.get('/api/logout', loginController.logout);
 
+//tags
 app.get('/api/tags', auth.requireLoginWithRole('Redakteur'), tagController.list);
+
+//comments
+app.get('/api/news/:id/comments', commentController.list);
+app.post('/api/news/:id/comments', auth.requireLogin, commentController.create);
 
 
 app.use(function(req, res){
