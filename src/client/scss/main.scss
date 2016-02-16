@@ -22,11 +22,14 @@ a{
 
 a:hover, a:focus{
 	color: $link_color_hover;
+    text-decoration: none;
 }
 
 p{
     font-family: $main_font;
     word-spacing: 4px;
+    text-align: justify;
+    word-wrap: break-word;
 }
 
 button a{
