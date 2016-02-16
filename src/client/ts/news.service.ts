@@ -21,7 +21,7 @@ export class NewsService {
                     .catch(this.handleError);
   }
   
-  addNews(title: string, content: string, tag_id) : Observable<News>{
+  addNews(title: string, content: string, tag_id: number) : Observable<News>{
       let body = JSON.stringify({title, content, tag_id});
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
@@ -33,6 +33,15 @@ export class NewsService {
   
   deleteNews(id: number){
       return this.http.delete('api/news/' + id)
+                      .catch(this.handleError);
+  }
+  
+  updateNews(id: number, title: string, content: string, tag_id: number){
+      let body = JSON.stringify({title, content, tag_id, id});
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      
+      return this.http.put('api/news/' + id, body, options)
                       .catch(this.handleError);
   }
   
