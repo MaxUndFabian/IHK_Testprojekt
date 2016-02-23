@@ -10,6 +10,7 @@ import { FooterComponent} from './footer.component';
 import { ContactComponent } from './contact.component';
 import { ImprintComponent } from './imprint.component';
 import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 
 @Component({
   selector: 'my-app',
@@ -52,6 +53,11 @@ import { LoginComponent } from './login.component';
     path: '/imprint',
     name: 'Imprint',
     component: ImprintComponent
+  },
+  {
+      path: '/register',
+      name: 'Register',
+      component: RegisterComponent
   }
 ])
 export class AppRoutingComponent {

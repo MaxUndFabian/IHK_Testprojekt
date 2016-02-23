@@ -6,6 +6,7 @@ var newsController = require('./server/controllers/news_controller');
 var tagController = require('./server/controllers/tag_controller');
 var loginController = require('./server/controllers/login_controller');
 var commentController = require('./server/controllers/comments_controller');
+var registerController= require('./server/controllers/register_controller');
 
 var auth = require('./server/auth/authenticate');
 
@@ -47,6 +48,9 @@ app.get('/api/tags', auth.requireLoginWithRole('Redakteur'), tagController.list)
 //comments
 app.get('/api/news/:id/comments', commentController.list);
 app.post('/api/news/:id/comments', auth.requireLogin, commentController.create);
+
+//register
+app.post('/api/register', registerController.create);
 
 
 app.use(function(req, res){
