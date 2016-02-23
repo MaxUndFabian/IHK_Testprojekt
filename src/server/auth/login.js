@@ -18,7 +18,7 @@ module.exports.login = function(req, res){
     console.log('somone tried to login');
     console.log(req.body);
     if(!sess.loggedIn){
-        con.query("SELECT u.username, role.title rolename FROM Users as u left join Roles role on (u.role_id=role.id) WHERE username = ? AND password = ?;", [username, password], function(err, rows){
+        con.query("SELECT u.username, u.firstname, u.lastname, role.title rolename FROM Users as u left join Roles role on (u.role_id=role.id) WHERE username = ? AND password = ?;", [username, password], function(err, rows){
             if(err){
                 // db server error
                 console.log(err);
@@ -35,11 +35,14 @@ module.exports.login = function(req, res){
             sess.loggedIn = true;
             sess.username = rows[0].username;
             sess.role = rows[0].rolename;
-            res.json({username: rows[0].username, role: rows[0].rolename});
+            res.json(rows[0]);
         });
     }
     else{
-        res.json({username: sess.username, role: sess.role});
+        //This is ugly !!!
+        con.query('SELECT * FROM Users WHERE username = ?', [sess.username], function(err, rows){
+            res.json({username: sess.username, rolename: sess.role, firstname: rows[0].firstname, lastname: rows[0].lastname});
+        });
     }
 }
 

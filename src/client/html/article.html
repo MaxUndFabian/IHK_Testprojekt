@@ -4,7 +4,7 @@
             <article>
                 <h3>{{singleNews.title}}</h3>
                 <span class="info">
-                    {{singleNews.username}} - {{singleNews.tag_name}} - {{singleNews.creationDate | date:"ddMMyyhhmm"}}
+                    {{singleNews.firstname}} {{singleNews.lastname}} - {{singleNews.tag_name}} - {{singleNews.creationDate | date:"ddMMyyhhmm"}}
                     <a (click)="delete()" *ngIf="showEditLinks()">Löschen</a>
                     <a (click)="openUpdate()" *ngIf="showEditLinks()">Bearbeiten</a>
                 </span>

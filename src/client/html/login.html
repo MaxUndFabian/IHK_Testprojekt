@@ -1,6 +1,6 @@
 <!-- navigation right side entries-->
 <li>
-    <a *ngIf="username">Hallo {{username}}! ({{role}})</a>    
+    <a *ngIf="user.username">Hallo {{user.firstname}}! ({{user.rolename}})</a>    
 </li>
 <li>
     <a (click)="linkClicked()">{{linkText}}</a>
@@ -15,8 +15,17 @@
         <h4 class="modal-title" id="myModalLabel">Login</h4>
       </div>
       <div class="modal-body">
-        <input type="text" [(ngModel)]="input_username">
-        <input type="text" [(ngModel)]="input_password">
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" [(ngModel)]="input_username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="text" [(ngModel)]="input_password" class="form-control" required>
+            </div>
+        </form>
+        <p>Noch nicht dabei? <a (click)="registerClicked()">Registrieren.</a></p>
       </div>
       <div class="modal-footer">
         <button type="button" (click)="login()" class="btn btn-primary">Login</button>

@@ -14,10 +14,10 @@ export class LoginComponent {
     linkText: string;
     input_username: string;
     input_password: string;
-    username: string;
-    role: string;
+    user: any;
     
     constructor(private _loginService: LoginService, private _router: Router){
+        this.user = {};
         this.linkText = 'Login';
         this.updateLoginStatus();
     }
@@ -35,12 +35,9 @@ export class LoginComponent {
     login(){
         this._loginService.login(this.input_username, this.input_password)
                           .subscribe((res) => {
-                               //console.log(res);
-                               this.username = res.username;
+                               this.user = res;
                                localStorage.username = res.username;
-                               
-                               this.role = res.role;
-                               localStorage.role = res.role;
+                               localStorage.role = res.rolename;
                                
                                this.linkText = 'Logout';
                                this.input_username = '';
@@ -58,7 +55,7 @@ export class LoginComponent {
     logout(){
         this._loginService.logout().subscribe();
         this.linkText = 'Login';
-        this.username = null;
+        this.user = {};
         localStorage.clear();
         this._router.navigateByUrl('/');
     }
@@ -69,8 +66,8 @@ export class LoginComponent {
                localStorage.loggedIn = true;
                this.linkText = "Logout";
                this._loginService.login("","").subscribe((res)=>{
-                   this.username = res.username;
-                   this.role = res.role;
+                   this.user = res;
+                   console.log(this.user);
                })
            }
            else{
@@ -78,5 +75,11 @@ export class LoginComponent {
                this.linkText = 'Login';
            }
         });
+    }
+    
+    
+    registerClicked(){
+        $('#loginModal').modal('hide');
+        this._router.navigate(['Register']);
     }
 }
