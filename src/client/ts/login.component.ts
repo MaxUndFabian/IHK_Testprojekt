@@ -14,11 +14,14 @@ export class LoginComponent {
     linkText: string;
     input_username: string;
     input_password: string;
+    errorMessage: string;
     user: any;
     
     constructor(private _loginService: LoginService, private _router: Router){
         this.user = {};
         this.linkText = 'Login';
+        this.input_username = '';
+        this.input_password = '';
         this.updateLoginStatus();
     }
     
@@ -28,6 +31,7 @@ export class LoginComponent {
             localStorage.loggedIn = false;
         }
         else{
+            this.errorMessage = '';
             $('#loginModal').modal('show');
         }
     }
@@ -36,23 +40,29 @@ export class LoginComponent {
         if(this.input_username == '' || this.input_password == ''){
             return;
         }
-        this._loginService.login(this.input_username, this.input_password)
-                          .subscribe((res) => {
-                               this.user = res;
-                               localStorage.username = res.username;
-                               localStorage.role = res.rolename;
-                               
-                               this.linkText = 'Logout';
-                               this.input_username = '';
-                               this.input_password = '';
-                               
-                               localStorage.loggedIn = true;
-                               $('#loginModal').modal('hide');
-                               
-                               //TODO reload the route, or navigate to specific route,
-                               // otherwise elements, that require login won't be displayed or will still be displayed
-                               this._router.navigateByUrl('/');
-                          });
+        else{
+            console.log('trying to log in');
+            this._loginService.login(this.input_username, this.input_password)
+                            .subscribe((res) => {
+                                this.user = res;
+                                localStorage.username = res.username;
+                                localStorage.role = res.rolename;
+                                
+                                this.linkText = 'Logout';
+                                this.input_username = '';
+                                this.input_password = '';
+                                
+                                localStorage.loggedIn = true;
+                                $('#loginModal').modal('hide');
+                                
+                                //TODO reload the route, or navigate to specific route,
+                                // otherwise elements, that require login won't be displayed or will still be displayed
+                                this._router.navigateByUrl('/');
+                            }, (error) => {
+                                this.errorMessage = error;
+                                this.input_password = '';
+                            });
+        }
     }
     
     logout(){
@@ -74,9 +84,13 @@ export class LoginComponent {
                })
            }
            else{
+               console.log("error from component: ");
+               console.log(error);
                localStorage.loggedIn = false;
                this.linkText = 'Login';
            }
+        }, (error) => {
+            console.error(error);
         });
     }
     
