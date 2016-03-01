@@ -80,6 +80,14 @@ export class NewsComponent {
       
   }
   
+  canCreateNews(){
+      console.log(this._loginService.role());
+      if(this._loginService.loggedIn() && (this._loginService.role() == "Administrator" || this._loginService.role() == "Redakteur")){
+          return true;
+      }
+      return false;
+  }
+  
   ngOnInit() {
     this.getNews();
   }

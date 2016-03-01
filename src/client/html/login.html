@@ -25,6 +25,7 @@
                 <input type="text" [(ngModel)]="input_password" class="form-control" required>
             </div>
         </form>
+        <p *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</p>
         <p>Noch nicht dabei? <a (click)="registerClicked()">Registrieren.</a></p>
       </div>
       <div class="modal-footer">

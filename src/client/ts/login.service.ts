@@ -18,6 +18,7 @@ export class LoginService {
     return this.http.post('api/login', body, options)
                     .map(res => res.json())
                     .do((data) => {
+                        console.log(data);
                         if(data.username){
                             console.log('were logged in!');
                             //console.log(data);
@@ -26,23 +27,13 @@ export class LoginService {
                     .catch(this.handleError);
   }
   
-  /*getUsername(id: number){
-      return this.http.get('api/news/' + id)
-                    .map(res => <News> res.json())
-                    //.do(data => console.log(data))
-                    .catch(this.handleError);
-  }*/
-  
   isLoggedIn(){
       return this.http.post('api/login')
                     .map(res => res.json())
                     .do((data) => {
                         if(data.username){
                             console.log('were logged in!');
-                            //console.log(data);
-                            return true;
                         }
-                        return false;
                     })
                     .catch(this.handleError);
   }
@@ -58,9 +49,13 @@ export class LoginService {
       return localStorage.username;
   }
   
+  role(): String{
+      return localStorage.role;
+  }
+  
   logout() {
       return this.http.get('api/logout')
-                      .map(res => res.json())
+                      .map(res => res.text())
                       .catch(this.handleError);
   }
   
@@ -68,6 +63,6 @@ export class LoginService {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
     console.error(error);
-    //return Observable.throw(error || 'Server error');
+    return Observable.throw(error._body || "Server error.");
   }
 }

@@ -22,13 +22,15 @@ module.exports.login = function(req, res){
             if(err){
                 // db server error
                 console.log(err);
-                res.sendStatus(500);
+                res.writeHead(500, "Internal Server error occured.", {'content-type' : 'text/plain'});
+                res.end("Internal Server error occured.");
                 return;
             }
             console.log(rows);
             if(!rows || !rows[0]){
                 // invalid combination of username and password
-                res.json({});
+                res.writeHead(401, "This combination of username/password does not exist.", {'content-type' : 'text/plain'});
+                res.end("This combination of username/password does not exist.");
                 return;
             }
             //success
