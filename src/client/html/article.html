@@ -8,7 +8,7 @@
                     <a (click)="delete()" *ngIf="showEditLinks()">Löschen</a>
                     <a (click)="openUpdate()" *ngIf="showEditLinks()">Bearbeiten</a>
                 </span>
-                <p class="article_content">{{singleNews.content}}</p>
+                <p class="article_content" [innerHTML]="singleNews.content_show"></p>
             </article>
             
             

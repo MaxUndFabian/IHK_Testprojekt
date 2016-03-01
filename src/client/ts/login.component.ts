@@ -33,6 +33,9 @@ export class LoginComponent {
     }
     
     login(){
+        if(this.input_username == '' || this.input_password == ''){
+            return;
+        }
         this._loginService.login(this.input_username, this.input_password)
                           .subscribe((res) => {
                                this.user = res;
