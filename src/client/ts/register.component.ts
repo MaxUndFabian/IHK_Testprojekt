@@ -15,14 +15,26 @@ export class RegisterComponent {
     username: Control;
     firstname: Control;
     lastname: Control;
+    email: Control;
     password: Control;
     pw_confirm: Control;
     hinderLoop: boolean;
+    
+    
+    input_firstname: string;
+    input_lastname: string;
+    input_password: string;
+    input_pw_confirm: string;
+    input_username: string;
+    input_email: string;
+    
+    
         
     constructor(private builder: FormBuilder, private http: Http){
         this.username = new Control("", Validators.compose([Validators.required]));
         this.firstname = new Control("", Validators.compose([Validators.required]));
         this.lastname = new Control("", Validators.compose([Validators.required]));
+        this.email = new Control("", Validators.compose([Validators.required, this.validEmail]))
         this.password = new Control("", Validators.compose([Validators.required, 
                                                           (c: Control) => {
                                                             if(this.pw_confirm != undefined){
@@ -61,7 +73,8 @@ export class RegisterComponent {
             firstname: this.firstname,
             lastname: this.lastname,
             password: this.password,
-            pw_confirm: this.pw_confirm
+            pw_confirm: this.pw_confirm,
+            email: this.email
         })
     }
     
@@ -76,7 +89,7 @@ export class RegisterComponent {
         var password = this.input_password;
         var firstname = this.input_firstname;
         var lastname = this.input_lastname;
-        var email = "test@maxisanidiot.com";
+        var email = this.input_email;
         
         
         let body = JSON.stringify({username, password, firstname, lastname, email});
@@ -94,6 +107,21 @@ export class RegisterComponent {
         this.input_password = '';
         this.input_pw_confirm = '';
         this.input_username = '';
+        this.input_email = '';
+    }
+    
+    
+    validEmail(control: Control) {
+        var regexp = new RegExp('^(.+)@(.+)[.](.+)$');
+    
+        if ( control.value !=''){
+            var test = regexp.test(control.value);
+            if(!test){
+                return { 'startsWithNumber': true };
+            }
+            return null;
+        }
+        return null;
     }
     
     private handleError (error: Response) {

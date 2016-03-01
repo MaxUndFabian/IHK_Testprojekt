@@ -35,6 +35,8 @@ export class NewsArticleComponent {
       this._newsService.getSingleNews(id).subscribe((news, error) => {
                                             this.singleNews = news;
                                             this.singleNews.creationDate = new Date(this.singleNews.creationDate);
+                                            console.log(this.singleNews.content);
+                                            this.singleNews.content_show = this.singleNews.content.replace(/\n/g, "<br/>");
                                             this.errorMessage = <any>error;
                                             this.getComments(this.singleNews.id);
                                          })

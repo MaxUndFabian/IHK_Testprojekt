@@ -55,6 +55,6 @@ export class NewsService {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
     console.error(error);
-    return Observable.throw(error || 'Server error');
+    //return Observable.throw(error || 'Server error');
   }
 }
