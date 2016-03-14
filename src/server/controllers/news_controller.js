@@ -75,6 +75,17 @@ module.exports.single = function(req, res){
     });
 }
 
+module.exports.getByTagId = function(req, res){
+    con.query('SELECT n.id, n.title, n.content, n.creationDate, n.lastModifiedDate, n.user_username username, user.firstname, user.lastname, tag.title tag_name FROM Newsentries as n left join Tags tag on (n.tag_id=tag.id) left join Users user on (n.user_username=user.username) WHERE n.tag_id= ?;', [req.params.id], function(err, rows){
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.json(rows);
+        }
+    })
+}
+
 
 module.exports.delete = function(req, res){
     con.query('SELECT id FROM Newsentries WHERE id=? AND user_username=?', [req.params.id, req.session.username], function(err, rows){

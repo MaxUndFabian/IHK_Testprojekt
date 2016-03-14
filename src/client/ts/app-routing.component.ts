@@ -11,11 +11,12 @@ import { ContactComponent } from './contact.component';
 import { ImprintComponent } from './imprint.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
+import {GrouppageNavigation} from './grouppage-routing.component';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'client/html/navigation.html',
-  directives: [ROUTER_DIRECTIVES, LoginComponent, FooterComponent],
+  directives: [ROUTER_DIRECTIVES, LoginComponent, FooterComponent, GrouppageNavigation],
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
@@ -62,9 +63,4 @@ import { RegisterComponent } from './register.component';
 ])
 export class AppRoutingComponent {
   constructor(private _router: Router){}
-    
-  gotoGroup(id: number){
-      let link = ['GroupPage', {id: id}];
-      this._router.navigate(link);
-  }
 }
