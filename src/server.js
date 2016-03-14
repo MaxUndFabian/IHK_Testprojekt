@@ -6,7 +6,8 @@ var newsController = require('./server/controllers/news_controller');
 var tagController = require('./server/controllers/tag_controller');
 var loginController = require('./server/controllers/login_controller');
 var commentController = require('./server/controllers/comments_controller');
-var registerController= require('./server/controllers/register_controller');
+var registerController = require('./server/controllers/register_controller');
+var groupPageController = require('./server/controllers/grouppage_controller');
 
 var auth = require('./server/auth/authenticate');
 
@@ -36,6 +37,7 @@ app.post('/api/news', auth.requireLoginWithRole('Redakteur'), newsController.cre
 app.put('/api/news/:id', newsController.update);
 app.get('/api/news', newsController.list);
 app.get('/api/news/:id', newsController.single);
+app.get('/api/news/tag/:id', newsController.getByTagId);
 app.delete('/api/news/:id', auth.requireLoginWithRole('Redakteur'), newsController.delete);
 
 //login
@@ -51,6 +53,12 @@ app.post('/api/news/:id/comments', auth.requireLogin, commentController.create);
 
 //register
 app.post('/api/register', registerController.create);
+
+
+//group pages
+app.get('/api/group/titlelist', groupPageController.titleList);
+app.get('/api/group/:id', groupPageController.single);
+app.put('/api/group/:id', groupPageController.update);
 
 
 app.use(function(req, res){

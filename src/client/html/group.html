@@ -1,9 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-8" id="content">
-            <h1>{{id}}</h1>
-            <p>Group</p>
+            <div class="group-page">
+                <h1>{{group.title}}</h1>
+                <p>{{group.content}}</p>
+            </div>
+            <br/>
+            <div class="news">
+                <h2>Aktuelles von den {{group.title}}</h2>
+                <article *ngFor="#new of news | arraySort:'-creationDate'">                     
+                    <h3 (click)="gotoArticle(new.id)" class="link">{{new.title}}</h3>
+                    <span class="info">{{new.firstname}} {{new.lastname}} - {{new.tag_name}} - {{new.creationDate | date:"ddMMyyhhmm"}}</span>
+                    <p class="article_content">{{new.content}}</p>
+                </article>
+            </div>
         </div>
-        <div class="col col-md-4" id="content"></div>
+        <div class="col col-md-4" id="content">
+        </div>
     </div>
 </div>

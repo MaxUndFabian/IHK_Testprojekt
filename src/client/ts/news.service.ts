@@ -51,6 +51,12 @@ export class NewsService {
                       .catch(this.handleError);
   }
   
+  getNewsByTagId(id: number){
+      return this.http.get('api/news/tag/' + id)
+                      .map(res => res.json())
+                      .catch(this.handleError);
+  }
+  
   private handleError (error: Response) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
