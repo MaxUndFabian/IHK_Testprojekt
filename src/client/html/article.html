@@ -10,12 +10,16 @@
                 </span>
                 <p class="article_content" [innerHTML]="singleNews.content_show"></p>
             </article>
-            
-            
         </div>
         <div class="col col-md-4">
-            <input type="text" [(ngModel)]="input_comment" (keypress)="keyEventHandler($event)" placeholder="Was hälst du davon?">
-            <p *ngFor="#comment of comments">@{{comment.username}} - {{comment.content}}</p>
+            <input type="text" [(ngModel)]="input_comment" (keypress)="keyEventHandler($event)" placeholder="Was hälst du davon?" class="comment_textarea">
+            <div *ngFor="#comment of comments">
+                <hr>
+                <span class="username">{{comment.username}}</span>
+                <span class="date">{{comment.date | date:"ddMMyyhhmm"}}</span>
+                <p class="comment">{{comment.content}}</p>
+            </div>
+            <br/>
         </div>
     </div>
 </div>

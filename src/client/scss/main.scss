@@ -61,6 +61,34 @@ button a:hover,button a:focus{
 	padding: 0px;
 }
 
+
+.username{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.date{
+    float: right;
+    font-size: 12px;
+}
+
+.comment{
+    opacity: 0.7;
+    padding-top: 4px;
+    line-height: 21.5px;
+    text-align: -webkit-auto;
+    font-size: 12px;
+}
+
+.comment_textarea{
+    margin-top: 20px;
+}
+
+hr{
+    border-top: 1px solid rgba(238, 238, 238, 0.64);
+    width: 90%;
+}
+
 @media (max-width: 990px){
     #footer_padding{
         padding-bottom: 270px;

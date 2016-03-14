@@ -79,6 +79,11 @@ export class NewsArticleComponent {
       this._commentService.getComments(newsId).subscribe((res, err)=>{
           this.comments = res;
           this.errorMessage = <any>err;
+          this.comments.forEach(element => {
+                console.log(element.date);
+                element.date = new Date(element.date);
+                
+          });
       })
   }
   
